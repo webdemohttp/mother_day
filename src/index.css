@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-800 overflow-x-hidden;
+  }
+}
+
+/* Flower Variables & Animations */
+:root {
+  --petal-color: #ff8fa3;
+  --petal-color-dark: #ff4d6d;
+  --petal-color-light: #ffb3c1;
+  --stem-color: #70e000;
+  --leaf-color: #38b000;
+}
+
+@keyframes stem-grow {
+  from { height: 0; }
+  to { height: 160px; }
+}
+
+@keyframes petal-bloom {
+  0% { 
+    transform: scale(0) rotate(var(--tw-rotate, 0deg));
+    opacity: 0;
+  }
+  100% { 
+    transform: scale(1) rotate(var(--tw-rotate, 0deg));
+    opacity: 1;
+  }
+}
+
+@keyframes leaf-grow-left {
+  0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+  100% { transform: scale(1) rotate(-45deg); opacity: 1; }
+}
+
+@keyframes leaf-grow-right {
+  0% { transform: scale(0) rotate(45deg); opacity: 0; }
+  100% { transform: scale(1) rotate(45deg); opacity: 1; }
+}
+
+/* Custom Utilities for Flower */
+.flower-shadow {
+  filter: drop-shadow(0 10px 15px rgba(244, 114, 182, 0.2));
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.group:hover .petal-organic {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.petal-organic {
+  @apply absolute;
+  mask-image: radial-gradient(circle, black 75%, transparent 100%);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.bg-soft-gradient {
+  background: linear-gradient(135deg, #FFF5F5 0%, #FED7E2 100%);
+}
